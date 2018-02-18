@@ -1,0 +1,24 @@
+stty -ixon
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+function _update_ps1() {
+    PS1="$(powerline-go  -modules=venv,user,ssh,cwd,git,jobs,exit,root  -cwd-max-depth=1 $?)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+export EDITOR=vim
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export GOPATH=/home/phuc/workspace/go
+export PATH=$GOPATH/bin:$PATH
+export PATH=~/.config/composer/vendor/bin:$PATH
+alias w="cd ~/workspace"
+alias gl="git log --graph"
+alias gs="git status"
+alias gf="git diff"
+alias gb="git branch"
+alias ll="ls -al"
+alias gw="cd /home/phuc/workspace/go/src/github.com/pnify && pwd"
+alias kb="xmodmap ~/.xmodmap"
